@@ -41,7 +41,7 @@
 
     <behavior id="ButtonBehavior_temp">
         <method id="onCreate" params="label">
-            label.coordinates = {top:1, bottom:1, left:1, right:1};
+            label.coordinates = {top:1, bottom:0, left:1, right:1};
             label.skin = button_temp_Skin;
             label.style = labelStyle;
             label.active = true;
@@ -59,7 +59,7 @@
     </behavior>
         <behavior id="ButtonBehavior_temp_num">
         <method id="onCreate" params="label">
-            label.coordinates = {top:1, bottom:1, left:1, right:1};
+            label.coordinates = {top:0, bottom:1, left:1, right:1};
             label.skin = button_temp_Skin;
             label.style = numStyle;
             label.active = true;
