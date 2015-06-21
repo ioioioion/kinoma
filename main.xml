@@ -40,21 +40,39 @@
     <!-- MODEL -->
 
     <behavior id="ButtonBehavior_temp">
-        <method id="onCreate" params="text">
-            text.coordinates = {top:1, bottom:1, left:1, right:1};
-            text.skin = button_temp_Skin;
-            text.style = textStyle;
-            text.active = true;
+        <method id="onCreate" params="label">
+            label.coordinates = {top:1, bottom:1, left:1, right:1};
+            label.skin = button_temp_Skin;
+            label.style = labelStyle;
+            label.active = true;
         </method>
-        <method id="onTouchBegan" params="text">
-            text.skin = hiliteSkin;
+        <method id="onTouchBegan" params="label">
+            label.skin = hiliteSkin;
         </method>
-        <method id="onTouchEnded" params="text">
-            text.skin = button_temp_Skin;
-            this.onTap(text);
+        <method id="onTouchEnded" params="label">
+            label.skin = button_temp_Skin;
+            this.onTap(label);
         </method>
-        <method id="onTap" params="text">
-             trace(text.string);
+        <method id="onTap" params="label">
+             trace(label.string);
+        </method>
+    </behavior>
+        <behavior id="ButtonBehavior_temp_num">
+        <method id="onCreate" params="label">
+            label.coordinates = {top:1, bottom:1, left:1, right:1};
+            label.skin = button_temp_Skin;
+            label.style = numStyle;
+            label.active = true;
+        </method>
+        <method id="onTouchBegan" params="label">
+            label.skin = hiliteSkin;
+        </method>
+        <method id="onTouchEnded" params="label">
+            label.skin = button_temp_Skin;
+            this.onTap(label);
+        </method>
+        <method id="onTap" params="label">
+             trace(label.string);
         </method>
     </behavior>
     
@@ -155,11 +173,18 @@
 <container id="MainScreen" top="0" left="0" bottom="0" right="0" skin="backgroundSkin">
     <column width="320">
         <line left="0" right="0" height="140">
-            <text string="'\n\nTemperature\n80'">
-                <behavior like="ButtonBehavior_temp">
-                    <method id="onTap" params="text">text.invoke(new Message("/simple?first=nicky&amp;greeting=Sayonara"));</method>
-                </behavior>
-            </text>
+            <column top="0" left="0" bottom="0" right="0">
+                <label string="'Temperature'">
+                    <behavior like="ButtonBehavior_temp">
+                        <method id="onTap" params="label">label.invoke(new Message("/simple?first=nicky&amp;greeting=Sayonara"));</method>
+                    </behavior>
+                </label>
+                <label string="'50'">
+                    <behavior like="ButtonBehavior_temp_num">
+                        <method id="onTap" params="label">label.invoke(new Message("/simple?first=nicky&amp;greeting=Sayonara"));</method>
+                    </behavior>
+                </label>
+            </column>
             <column top="0" left="0" bottom="0" right="0">
                 <label string="'Soil Humidity'">
                     <behavior like="ButtonBehavior_wet">
