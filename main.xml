@@ -195,36 +195,30 @@
             <column top="0" left="0" bottom="0" right="0">
                 <label string="'Temperature'">
                     <behavior like="ButtonBehavior_temp">
-                        <method id="onTap" params="label">label.invoke(new Message("/simple?first=nicky&amp;greeting=Sayonara"));</method>
                     </behavior>
                 </label>
                 <label string="'50'">
                     <behavior like="ButtonBehavior_temp_num">
-                        <method id="onTap" params="label">label.invoke(new Message("/simple?first=nicky&amp;greeting=Sayonara"));</method>
                     </behavior>
                 </label>
             </column>
             <column top="0" left="0" bottom="0" right="0">
                 <label string="'Soil Humidity'">
                     <behavior like="ButtonBehavior_wet">
-                        <method id="onTap" params="label">label.invoke(new Message("/checkbox"));</method>
                     </behavior>
                 </label>
                 <label string="'50%'">
                     <behavior like="ButtonBehavior_wet_num">
-                        <method id="onTap" params="label">label.invoke(new Message("/checkbox"));</method>
                     </behavior>
                 </label>
             </column>
             <column top="0" left="0" bottom="0" right="0">
                 <label string="'Light'">
                     <behavior like="ButtonBehavior_light">
-                        <method id="onTap" params="label">label.invoke(new Message("/showcase?name2=James%20Bond"));</method>
                     </behavior>
                 </label>
                 <label string="'70'">
                     <behavior like="ButtonBehavior_light_num">
-                        <method id="onTap" params="label">label.invoke(new Message("/showcase?name2=James%20Bond"));</method>
                     </behavior>
                 </label>
             </column>
