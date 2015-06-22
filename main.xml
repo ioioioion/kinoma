@@ -234,6 +234,15 @@
 </container>
     
     <script><![CDATA[
+    application.invoke( new MessageWithObject( "pins:configure", {
+        	analogSensor: {
+                require: "analog",
+                pins: {
+                    analogTemp: { pin: 52 }
+                }
+            }
+        } ) );
+    	
     
     application.behavior = new MODEL.ApplicationBehavior( application );
     
