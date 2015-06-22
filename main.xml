@@ -47,7 +47,6 @@
             label.active = true;
         </method>
         <method id="onTouchBegan" params="label">
-            label.skin = hiliteSkin;
         </method>
         <method id="onTouchEnded" params="label">
             label.skin = button_temp_Skin;
@@ -65,7 +64,6 @@
             label.active = true;
         </method>
         <method id="onTouchBegan" params="label">
-            label.skin = hiliteSkin;
         </method>
         <method id="onTouchEnded" params="label">
             label.skin = button_temp_Skin;
@@ -84,7 +82,6 @@
             label.active = true;
         </method>
         <method id="onTouchBegan" params="label">
-            label.skin = hiliteSkin;
         </method>
         <method id="onTouchEnded" params="label">
             label.skin = button_wet_Skin;
@@ -102,7 +99,6 @@
             label.active = true;
         </method>
         <method id="onTouchBegan" params="label">
-            label.skin = hiliteSkin;
         </method>
         <method id="onTouchEnded" params="label">
             label.skin = button_wet_Skin;
@@ -121,7 +117,6 @@
             label.active = true;
         </method>
         <method id="onTouchBegan" params="label">
-            label.skin = hiliteSkin;
         </method>
         <method id="onTouchEnded" params="label">
             label.skin = button_light_Skin;
@@ -140,7 +135,6 @@
             label.active = true;
         </method>
         <method id="onTouchBegan" params="label">
-            label.skin = hiliteSkin;
         </method>
         <method id="onTouchEnded" params="label">
             label.skin = button_light_Skin;
