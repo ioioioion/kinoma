@@ -230,9 +230,9 @@
             </column>
         </line>
         <line left="0" right="0" height="100">
-            <label string="'Water'">
+            <label string="'Watering'">
                 <behavior like="ButtonBehavior_water">
-                    <method id="onTap" params="label">label.invoke(new Message("/busy"));</method>
+                    <method id="onTap" params="label">label.invoke(new Message("/Watering"));</method>
                 </behavior>
             </label>
             <label string="'Led'">
@@ -391,12 +391,12 @@
 
     <!-- Spinner and Busy item -->
 
-    <handler path="/busy">
+    <handler path="/Watering">
         <behavior like="MODEL.DialogBehavior">
             <method id="onDescribe" params="query">
                 return {
                     Dialog: DIALOG.Box,
-                    title: "I am busy.",
+                    title: "Setting",
                     items: [
                         {
                             Item: DIALOG.Slider,
