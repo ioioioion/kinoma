@@ -389,18 +389,21 @@
                         {
                             Item: DIALOG.Slider,
                             id: "slider",
-                            label: "Excpect Soil Humidity",
+                            label: "Set Soil Humidity",
                             min: 0,
                             max: 100,
                             value: exp_wet,
                             toString: function(val) { return Math.floor(val); }, 
                         },
                         {
-                            Item: DIALOG.Busy,
-                            string: "I said I'm busy!",
+                            Item: DIALOG.CheckboxRight,
+                            id: "auto_check",
+                            label: "Auto",
                         },
                     ],
-                    cancel: "Cancel",
+                    ok: "Go!",
+                    cancel: "Close",
+                    action: "/printResult",
                 };
             </method>
         </behavior>
