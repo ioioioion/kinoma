@@ -207,7 +207,7 @@
                 </label>
             </column>
             <column top="0" left="0" bottom="0" right="0">
-                <label string="'Light'">
+                <label string="'Luminance'">
                     <behavior like="ButtonBehavior_light">
                     </behavior>
                 </label>
@@ -225,7 +225,7 @@
             </label>
             <label string="'Led'">
                 <behavior like="ButtonBehavior_led">
-                    <method id="onTap" params="label">label.invoke(new Message("/progressing"));</method>
+                    <method id="onTap" params="label">label.invoke(new Message("/led"));</method>
                 </behavior>
             </label>
         </line>
@@ -446,41 +446,32 @@
         </behavior>
     </content>
 
-    <handler path="/progressing">
+    <handler path="/led">
         <behavior like="MODEL.DialogBehavior">
-            <method id="onDescribe" params="query">
-                var data = {
+             <method id="onDescribe" params="query">
+                return {
                     Dialog: DIALOG.Box,
+                    title: "Setting",
                     items: [
                         {
-                            Item: DIALOG.Comment,
-                            string: "Wasting your battery...",
+                            Item: DIALOG.Slider,
+                            id: "slider",
+                            label: "Set Luminance",
+                            min: 0,
+                            max: 100,
+                            value: exp_wet,
+                            toString: function(val) { return Math.floor(val); }, 
                         },
                         {
-                            // This is the progress bar data.
-                            // After dialog is instanciated, this object has
-                            // reference slot to the bar object with a name "BAR".
-                            Item: DIALOG.ProgressBar,
-                            value: -0.3, // negative value displays barber pole.
+                            Item: DIALOG.CheckboxRight,
+                            id: "auto_check",
+                            label: "Auto",
                         },
                     ],
-                    cancel: "Stop!",
+                    ok: "Go!",
+                    cancel: "Close",
+                    action: "/printResult",
                 };
-
-                var dummy_task = new Periodical({interval: 500, dialog: data});
-                dummy_task.start();
-                application.add(dummy_task);
-
-                // keep the reference for the task to clean it up later.
-                data.dummy_task = dummy_task;
-
-                return data;
-            </method>
-            <method id="onCancel" params="dialog">
-                var dummy_task = this.data.dummy_task;
-                dummy_task.stop();
-
-                application.remove(dummy_task);
             </method>
         </behavior>
     </handler>
