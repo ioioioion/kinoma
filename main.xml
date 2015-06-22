@@ -19,8 +19,8 @@
     <require path="mobile/model" id="MODEL"/>
     <require path="themes/sample/theme" id="THEME"/>
     <require path="mobile/keyboard" id="KEYBOARD"/>
-    <variable id="exp_wet" value="50"/>
-   	<variable id="exp_light" value="'50'"/>
+    <variable id="exp_wet" value="0"/>
+   	<variable id="exp_light" value="0"/>
     <!-- ASSETS -->
 
     <skin id="backgroundSkin" color="#000000"/>
@@ -35,7 +35,8 @@
     <style id="headerStyle" font="bold 16px" color="#444" align="center,bottom"/>
     <style id="buttonStyle" font="bold 16px" color="white" align="center,middle"/>
     <style id="labelStyle" font="bold 16px" color="white" align="center,bottom"/>
-    <style id="numStyle" font="bold 24px" color="white" align="center,top"/>
+    <style id="biglabelStyle" font="bold 24px" color="white" align="center,middle"/>
+    <style id="numStyle" font="bold 26px" color="white" align="center,top"/>
     
     <!-- MODEL -->
 
@@ -149,7 +150,7 @@
         <method id="onCreate" params="label">
             label.coordinates = {top:1, bottom:1, left:1, right:1};
             label.skin = button_water_Skin;
-            label.style = buttonStyle;
+            label.style = biglabelStyle;
             label.active = true;
         </method>
         <method id="onTouchBegan" params="label">
@@ -168,7 +169,7 @@
         <method id="onCreate" params="label">
             label.coordinates = {top:1, bottom:1, left:1, right:1};
             label.skin = button_led_Skin;
-            label.style = buttonStyle;
+            label.style = biglabelStyle;
             label.active = true;
         </method>
         <method id="onTouchBegan" params="label">
@@ -191,7 +192,7 @@
                     <behavior like="ButtonBehavior_temp">
                     </behavior>
                 </label>
-                <label string="'50'">
+                <label string="'50 °C'">
                     <behavior like="ButtonBehavior_temp_num">
                     </behavior>
                 </label>
@@ -201,7 +202,7 @@
                     <behavior like="ButtonBehavior_wet">
                     </behavior>
                 </label>
-                <label string="'50%'">
+                <label string="'50 %'">
                     <behavior like="ButtonBehavior_wet_num">
                     </behavior>
                 </label>
@@ -211,7 +212,7 @@
                     <behavior like="ButtonBehavior_light">
                     </behavior>
                 </label>
-                <label string="'70'">
+                <label string="'70 lx'">
                     <behavior like="ButtonBehavior_light_num">
                     </behavior>
                 </label>
@@ -243,141 +244,6 @@
     
     ]]></script>
     
-    <!-- Simple Dialog -->
-
-    <handler path="/simple">
-        <behavior like="MODEL.DialogBehavior">
-            <method id="onDescribe" params="query">
-                return {
-                    Dialog: DIALOG.Box,
-                    title: "What is your name?",
-                    action: "/printResult",
-                    items: [
-                        {
-                            Item: DIALOG.Field,
-                            id: "first",
-                            label: "First",
-                        },
-                        {
-                            Item: DIALOG.Field,
-                            id: "last_name",
-                            label: "Last",
-                        },
-                        {
-                            // This item has not displayed in the dialog,
-                            // but the value will be passed to the action.
-                            id: "secret",
-                        },
-                        {
-                            Item: DIALOG.Caption,
-                            string: query.greeting
-                        },
-                    ],
-                    ok: "OK",
-                    cancel: "Cancel",
-                };
-            </method>
-        </behavior>
-    </handler>
-    
-    <!-- Checkbox Dialog -->
-
-    <handler path="/checkbox">
-        <behavior like="MODEL.DialogBehavior">
-            <method id="onDescribe" params="query">
-                return {
-                    Dialog: DIALOG.Box,
-                    title: "Checkbox Sample",
-                    action: "/printResult",
-                    items: [
-                        {
-                            Item: DIALOG.Checkbox,
-                            id: "left_check",
-                            label: "Left side checkbox",
-                        },
-                        {
-                            Item: DIALOG.CheckboxRight,
-                            id: "right_check",
-                            label: "Right side checkbox",
-                        },
-                    ],
-                    ok: "OK",
-                    cancel: "Cancel",
-                };
-            </method>
-        </behavior>
-    </handler>
-    
-    <!-- Show case -->
-
-    <handler path="/showcase">
-        <behavior like="MODEL.DialogBehavior">
-            <method id="onDescribe" params="query">
-                return {
-                    Dialog: DIALOG.Box,
-                    items: [
-                        {
-                            Item: DIALOG.Field,
-                            id: "name",
-                            label: "Field",
-                        },
-                        {
-                            Item: DIALOG.Field,
-                            id: "name2",
-                        },
-                        {
-                            Item: DIALOG.Caption,
-                            string: "Initial value is passed by the query",
-                        },
-                        {
-                            Item: DIALOG.Password,
-                            id: 'password',
-                            label: "PIN",
-                        },
-                        {
-                            Item: DIALOG.Spacer,
-                        },
-                        {
-                            Item: DIALOG.FieldHint,
-                            id: "name3",
-                            value: "",
-                            hint: "Nickname",
-                            
-                        },
-                        {
-                            Item: DIALOG.Slider,
-                            id: "slider",
-                            label: "Score",
-                            min: 0,
-                            max: 100,
-                            value: 0,
-                            toString: function(val) { return Math.floor(val); }, 
-                        },
-                        {
-                            Item: DIALOG.Spacer,
-                        },
-                        {
-                            Item: DIALOG.Subtitle,
-                            string: "This is Subtitle.",
-                        },
-                        {
-                            Item: DIALOG.Caption,
-                            string: "This is Caption.",
-                        },
-                        {
-                            Item: DIALOG.Comment,
-                            string: "This is Comment.",
-                        },
-                    ],
-                    ok: "Go!",
-                    cancel: "Close",
-                    action: "/printResult",
-                };
-            </method>
-        </behavior>
-    </handler>
-
-    <!-- Spinner and Busy item -->
 
     <handler path="/Watering">
         <behavior like="MODEL.DialogBehavior">
@@ -397,8 +263,8 @@
                         },
                         {
                             Item: DIALOG.CheckboxRight,
-                            id: "auto_check",
-                            label: "Auto",
+                            id: "enable_check",
+                            label: "Enable",
                         },
                     ],
                     ok: "Go!",
@@ -408,43 +274,6 @@
             </method>
         </behavior>
     </handler>
-    
-    <!-- Progress Bar -->
-
-    <!--
-        Some periodical task is needed to change progress bar's value.
-        Usually this is your responsibity to prepare this kind of task.
-        Actually that task may be the heart of your application, such as
-        downloading, compressing or analyzing.
-
-        This is completely dummy task.
-        It is here just to waste your devices battery.
-    -->
-    <content id="Periodical" width="32" height="32" bottom="4" right="4" skin="dummuSkin">
-        <behavior>
-            <method id="onCreate" params="content, data">
-                this.dialog = data.dialog;
-                content.duration = data.interval;
-            </method>
-            <method id="onDisplayed" params="content">
-                content.start();
-            </method>
-            <method id="onFinished" params="content">
-                var progressBar = this.dialog.items[1];
-                progressBar.value += 0.1;
-                progressBar.BAR.delegate("onChanged");
-
-                if (progressBar.value >= 1.0) {
-                    // to close dialog with "onCancel" invocation
-                    progressBar.BAR.bubble("onCancel");
-                } else {
-                    // loop again
-                    content.time = 0;
-                    content.start();
-                }
-            </method>
-        </behavior>
-    </content>
 
     <handler path="/led">
         <behavior like="MODEL.DialogBehavior">
@@ -459,13 +288,13 @@
                             label: "Set Luminance",
                             min: 0,
                             max: 100,
-                            value: exp_wet,
+                            value: exp_light,
                             toString: function(val) { return Math.floor(val); }, 
                         },
                         {
                             Item: DIALOG.CheckboxRight,
-                            id: "auto_check",
-                            label: "Auto",
+                            id: "enable_check",
+                            label: "Enable",
                         },
                     ],
                     ok: "Go!",
